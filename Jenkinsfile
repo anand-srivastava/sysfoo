@@ -44,7 +44,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'dockerLogin') {
 
-            def dockerImage = docker.build("xxxxxx/sysfoo:v${env.BUILD_ID}", "./")
+            def dockerImage = docker.build("anasriva/sysfoo:v${env.BUILD_ID}", "./")
 
             dockerImage.push()
 
