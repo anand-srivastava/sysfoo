@@ -30,7 +30,9 @@ pipeline {
         docker {
           image 'maven:3.6.3-jdk-11-slim'
         }
-
+        when {
+        branch 'master'
+      }
       }
       steps {
         sh 'mvn package -DskipTests'
@@ -59,6 +61,7 @@ pipeline {
     }
 
     stage('deploy to dev') {
+      agent any
       steps {
         sh 'docker-compose up -d'
       }
